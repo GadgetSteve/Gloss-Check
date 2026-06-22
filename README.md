@@ -28,8 +28,8 @@ usage: gloss_check.py [-h] [-L {NONE,de_DE,en_AU,en_GB,en_US,fr_FR}]
                       [DOCS [DOCS ...]]
 
 Purpose: Find the candidates for the glossary in a word document. Author:
-Steve Barnes --<Steven.Barnes@bhge.com> Created: 13/03/2017. Updated:
-21/04/2017. Find the candidates for the glossary in a word document.
+Steve Barnes --<gadgetsteve@hotmail.com> Created: 13/03/2017. Updated:
+22/06/2026. Find the candidates for the glossary in a word document.
 
 positional arguments:
   DOCS                  Word document(s) to check, (Wildcards OK).
@@ -66,7 +66,7 @@ Either start the GUI from the command line with `gloss_check`, double click on t
 ### Authors and Contributors
 The following have contributed to the development of this package:
 
- - [Steve Barnes](https://github.build.ge.com/212303160) at GE Oil & Gas (UK) in Nailsea, UK.
+ - [Steve Barnes](https://github.com/GadgetSteve).
 
 ### Open Source Elements
 

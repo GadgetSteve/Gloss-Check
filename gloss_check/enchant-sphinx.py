@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding:utf-8
 """
-  Author:  Steve Barnes --<Steven.Barnes@bhge.com>
+  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
   Purpose: Spell check all of the RST files in a sphinx project.
   Created: 14/03/2017
 """

@@ -3,7 +3,7 @@
 """
 Purpose: Find the candidates for the glossary in a word document.
 
-Author: Steve Barnes --<Steven.Barnes@bhge.com>
+Author: Steve Barnes --<gadgetsteve@hotmail.com>
 Created: 13/03/2017.
 Last Updated: 12/08/2022.
 """

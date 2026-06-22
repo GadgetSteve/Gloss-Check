@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding:utf-8
 """
-  Author:  Steve Barnes --<Steven.Barnes@bhge.com>
+  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
   Purpose: XML Tree based document processing.
   Created: 17/04/2017
 """

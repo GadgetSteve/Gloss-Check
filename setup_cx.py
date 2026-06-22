@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding:utf-8
 """
-Author:  Steve Barnes -- <Steven.Barnes@bakerhughes.com>
+Author:  Steve Barnes -- <gadgetsteve@hotmail.com>
 Purpose: Build Glossary Checker into an executable.
 Created: 08/09/22
 
@@ -38,7 +38,7 @@ setup(
     author="Steve Barnes",  # Optional
     # This should be a valid email address corresponding to the author listed
     # above.
-    author_email="Steven.Barnes@bakerhughes.com",  # Optional
+    author_email="gadgetsteve@hotmail.com",  # Optional
     license="Baker-Hughes Internal",
     # This section is to trigger the use of setuptools_scm to automate version numbers.
     use_scm_version=True,
