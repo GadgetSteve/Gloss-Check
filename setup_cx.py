@@ -39,7 +39,7 @@ setup(
     # This should be a valid email address corresponding to the author listed
     # above.
     author_email="gadgetsteve@hotmail.com",  # Optional
-    license="Baker-Hughes Internal",
+    license="MIT",
     # This section is to trigger the use of setuptools_scm to automate version numbers.
     use_scm_version=True,
     setup_requires=[
