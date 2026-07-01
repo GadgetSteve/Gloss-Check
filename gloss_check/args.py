@@ -67,9 +67,10 @@ ARG_LIST = [
         ],
         {
             "action": "store_true",
-            "lable": "Came&l Case",
+            "lable": "Exclude Came&l Case",
             "savecfg": True,
-            "help": "Exclude words with mixed cases such as camelCase, PascalCase, etc.",
+            "help": "Exclude words with mixed cases such as camelCase, PascalCase, etc."
+                    " Helps to skip code fragments.",
         },
     ),
     (
