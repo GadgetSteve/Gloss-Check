@@ -2,7 +2,7 @@
 name = "Glossary_Checker"
 description = "Glossary Checker!"
 authors = [{name = "Steve Barnes", email = "gadgetsteve@hotmail.com"},]
-license = {text = "BSD"}
+license = "MIT"
 requires-python = ">=3.8"
 dependencies = [
     "altgraph>=0.17.2",
