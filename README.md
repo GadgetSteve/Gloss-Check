@@ -42,8 +42,7 @@ optional arguments:
                         Minimum Length for a possible glossary entry
   -u, -U, --upper_only  Only consider all uppercase strings as candidates.
   -C, -c, --chars_only  Exclude words with embedded numbers or symbols.
-  -K, -k, --inc_camel   Include any word with upper any case after the first
-                        letter.
+  -K, -k, --exc_camel   Exclude words with mixed cases such as camelCase, PascalCase, etc.
   -o, -1, --one-per-line
                         Display in a single column
   -T, -t, --table_gloss
@@ -61,7 +60,7 @@ optional arguments:
 ```
 
 ### GUI Usage
-Either start the GUI from the command line with `gloss_check`, double click on the `gloss_check.exe` file or add an icon to the desktop.
+Either start the GUI from the command line with `gloss_check`, double click on the `gloss_check.exe` file, _if it exists_ or add an icon to the desktop.
 
 ### Authors and Contributors
 The following have contributed to the development of this package:
@@ -75,7 +74,7 @@ This software uses the following Open Source components:
  - [Python](https://www.python.org/) Programming Language
  - [wxpython](https://wxpython.org/) GUI
  - [python-docx](https://github.com/python-openxml/python-docx) Docx Parsing.
- - [pywin32](http://sourceforge.net/projects/pypiwin32/) calling Word for Doc-Docx conversion.
+ - [pywin32](http://sourceforge.net/projects/pypiwin32/) calling Word for Doc->Docx conversion.
  - [lxml](http://lxml.de/) XML Parsing
  - [pyenchant](https://pythonhosted.org/pyenchant/) Spell Checking
  - [pyinstaller](http://www.pyinstaller.org/) Windows compatible binary build.

@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # encoding:utf-8
 """
-  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
-  Purpose: Provide a GUI
-  Created: 17/04/2017
+Author:  Steve Barnes --<gadgetsteve@hotmail.com>
+Purpose: Provide a GUI
+Created: 17/04/2017
 """
+
 from __future__ import (
     print_function,
 )
@@ -139,7 +140,12 @@ if GUI_OK:
 
             for name in filenames:
                 self.window.write_text("\nProcessing %s!" % name)
-                (success, candidates, unused, gloss_len,) = gloss_utils.get_candidates(
+                (
+                    success,
+                    candidates,
+                    unused,
+                    gloss_len,
+                ) = gloss_utils.get_candidates(
                     name, extern_gloss=glossary, options=options
                 )
                 if not success:
@@ -214,7 +220,7 @@ if GUI_OK:
                 self.timer.Stop()
 
             OPW = wx.FindWindowByLabel("wxPython: stdout/stderr")
-            if not None == OPW:
+            if OPW is not None:
                 OPW.Destroy()
 
         def populate_options(self):
@@ -272,7 +278,7 @@ if GUI_OK:
                 choices=[str(c) for c in details["choices"]],
             )
             start_val = details.get("default")
-            if not cfg_val is None:
+            if cfg_val is not None:
                 start_val = cfg_val
             ctrl.SetStringSelection(str(start_val))
             ctrl.rettype = details.get("type", str)
@@ -284,7 +290,7 @@ if GUI_OK:
             """Add a checkbox."""
             cb_style = wx.ALIGN_LEFT | wx.ALIGN_CENTER_VERTICAL | wx.ALL
             start_val = details["action"] == "store_false"
-            if not cfg_val is None:
+            if cfg_val is not None:
                 start_val = cfg_val
             ctrl = wx.CheckBox(self, -1, lable, name=name)
             self.droptgt.options[name] = start_val
@@ -356,6 +362,8 @@ if GUI_OK:
         app = wx.App(redirect=True)
         frame = wx.Frame(None, -1, "Glossary Checker %s" % VERSION, size=(600, 400))
         win = GuiPanel(frame, sys.stdout)
+        if win is None:
+            sys.exit("Error creating GUI panel")
         frame.Show(True)
         app.MainLoop()
 

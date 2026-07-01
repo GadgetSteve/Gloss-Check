@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # encoding:utf-8
 """
-  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
-  Purpose: Convert MS Word doc files to docx
-  Created: 04/04/2017
+Author:  Steve Barnes --<gadgetsteve@hotmail.com>
+Purpose: Convert MS Word doc files to docx
+Created: 04/04/2017
 """
+
 from __future__ import (
     print_function,
 )

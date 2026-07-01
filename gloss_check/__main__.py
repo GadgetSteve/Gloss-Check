@@ -7,11 +7,11 @@ Author: Steve Barnes --<gadgetsteve@hotmail.com>
 Created: 13/03/2017.
 Last Updated: 12/08/2022.
 """
+
 # (Inspired by python-docx <https://github.com/mikemaccana/python-docx> &
 # <http://etienned.github.io/posts/extract-text-from-word-docx-simply/>)
 from __future__ import print_function
 import sys
-import argparse
 
 # Local Imports
 try:

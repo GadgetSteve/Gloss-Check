@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # encoding:utf-8
 """
-  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
-  Purpose: Prepare a release
-  Created: 17/04/2017
+Author:  Steve Barnes --<gadgetsteve@hotmail.com>
+Purpose: Prepare a release
+Created: 17/04/2017
 """
+
 from __future__ import (
     print_function,
 )
@@ -17,8 +18,6 @@ import shutil
 import collections
 from dulwich.repo import Repo
 import semantic_version as sv
-
-BOX_PATH = r'"D:\Users\212303160\Desktop\Box Sync (New)\Box Sync\Software\Gloss-Check"'
 
 
 def get_latest_tag(repo):
@@ -35,6 +34,7 @@ def get_latest_tag(repo):
 
 def next_build(last_ver):
     """Get the next build identifier."""
+
     # build = last_ver.build
     def give_next_build():
         """Construct a version string from the current."""
@@ -42,7 +42,7 @@ def next_build(last_ver):
         now = datetime.datetime.now()
         newver.build = [now.strftime("%Y_%m_%d_%H%M")]
         while newver <= last_ver:
-            buildname = raw_input("Build Name: ")
+            buildname = input("Build Name: ")
             newver = sv.Version(
                 "%s.%s.%s+%s"
                 % (last_ver.major, last_ver.minor, last_ver.patch, buildname)
@@ -57,11 +57,8 @@ def next_build(last_ver):
 def get_next_release(repo):
     """Prompt for the information to generate the next release tag"""
     release_types = collections.OrderedDict()
-    if check_connected():
-        for k, t in [("M", "Major"), ("N", "Minor"), ("P", "Patch")]:
-            release_types[k] = t
-    else:
-        print("It doesn't lool like we have a connection for releases!")
+    for k, t in [("M", "Major"), ("N", "Minor"), ("P", "Patch")]:
+        release_types[k] = t
     release_types["B"] = "Build"
     release_types["C"] = "Cancel"
     last_ver, last_build = get_latest_tag(repo)
@@ -78,7 +75,7 @@ def get_next_release(repo):
         ["%s=%s" % item for item in release_types.iteritems()]
     )
     while reltype not in release_types.keys():
-        instr = raw_input(prompt)
+        instr = input(prompt)
         reltype = instr[0].upper()
     next_release = m_next_release[reltype]()
     return next_release
@@ -150,7 +147,6 @@ def zipdir(path, ziph):
         ziph.write(root, os.path.relpath(root, relroot))
         for filename in files:
             filepath = os.path.join(root, filename)
-            arcname = os.path.join(os.path.relpath(root, relroot), filename)
             ziph.write(os.path.relpath(root, relroot), filepath)
     ziph.close()
 
@@ -166,13 +162,6 @@ def zip_build(target, version):
     return zipped_to
 
 
-def check_connected():
-    """Check if currently connected to network directly or via F5."""
-    # Currently a bit of a hack but I have D:/Org2 mapped to a network drive
-    # that is only available when connected directly or via F5.
-    return os.path.isdir(r"D:/Org2/Engineering/")
-
-
 def main():
     """The main process."""
     outfiles = []
@@ -184,11 +173,11 @@ def main():
     update_version_file(next_release, verfile)
     release_build = len(next_release.build) == 0
     if release_build:
-        pre = raw_input("Pre-Release?: ")
+        pre = input("Pre-Release?: ")
         if len(pre):
             next_release.prerelease = [pre]
             update_version_file(next_release, verfile)
-        msg = raw_input("Release Message: ").strip()
+        msg = input("Release Message: ").strip()
         add_changes_git(msg)
         try:
             push_git()
@@ -210,11 +199,6 @@ def main():
         outfile = zip_build("gloss_check", "v%s" % next_release)
         status += "\nBuild Zipped to: %s" % outfile
         outfiles.append(outfile)
-    if release_build and len(outfiles) > 0 and os.path.exists(BOX_PATH):
-        print("Copy zips to Box!")
-        for oufile in outfiles:
-            shutil.copy(outfile, BOX_PATH)
-        print("Done!")
     print(status)
 
 

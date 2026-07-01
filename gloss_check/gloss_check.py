@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # coding:utf-8
 """
-  Purpose: Find the candidates for the glossary in a word document.
+Purpose: Find the candidates for the glossary in a word document.
 
-  Author: Steve Barnes --<gadgetsteve@hotmail.com>
-  Created: 13/03/2017.
-  Last Updated: 25/06/2018.
+Author: Steve Barnes --<gadgetsteve@hotmail.com>
+Created: 13/03/2017.
+Last Updated: 25/06/2018.
 """
+
 # (Inspired by python-docx <https://github.com/mikemaccana/python-docx> &
 # <http://etienned.github.io/posts/extract-text-from-word-docx-simply/>)
 from __future__ import print_function
 import sys
-import argparse
 
 try:
     import text_utls

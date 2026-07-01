@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding:utf-8
 """
-  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
-  Purpose: Utilties for the glossary checker
-  Created: 11/04/2017
+Author:  Steve Barnes --<gadgetsteve@hotmail.com>
+Purpose: Utilties for the glossary checker
+Created: 11/04/2017
 """
 
 import sys
@@ -71,11 +71,7 @@ def get_glossary(ops):
     if ops.glossary:
         print("Reading Glossary:")
         for item in ops.glossary:
-            if (
-                isinstance(item, str)
-                or sys.version_info[0] == 2
-                and isinstance(item, unicode)
-            ):
+            if isinstance(item, str):
                 infile = open(item)
             else:
                 infile = item
@@ -87,6 +83,17 @@ def get_glossary(ops):
     ingloss = clean_wordlist(ingloss)
     ingloss = get_candidates_from_list(ingloss, extern_gloss=[], options=ops)
     return ingloss
+
+
+def mixed_case(word: str) -> bool:
+    """
+    Flag camelCase & PascalCase but ignore Capitalised words.
+    """
+    return (
+        len(word) > 2
+        and any([c.isupper() for c in word[1:]])
+        and any([c.islower() for c in word[1:]])
+    )
 
 
 def get_candidates_from_list(words, extern_gloss=None, doc_gloss=None, options=None):
@@ -102,7 +109,11 @@ def get_candidates_from_list(words, extern_gloss=None, doc_gloss=None, options=N
         chars_only: Exclude words with embedded numbers or symbols.
         lang: Language code to spell check against.
     """
-    if enchant is not None and options.lang.upper() != "NONE":
+    if (
+        (enchant is not None)
+        and (options is not None)
+        and (options.lang.upper() != "NONE")
+    ):
         try:
             chker = enchant.Dict(options.lang)
             words = [
@@ -120,8 +131,8 @@ def get_candidates_from_list(words, extern_gloss=None, doc_gloss=None, options=N
             if all([c.isupper() for c in w[:-1] if c.isalpha()])
             and (w[-1].isupper() or w[-1] == "s")
         ]
-    if options.inc_camel:  # Camel Case
-        words = [w for w in words if len(w) > 1 and any([c.isupper() for c in w[1:]])]
+    if options.exc_camel:  # Exclude camelCase & PascalCase words
+        words = [w for w in words if not mixed_case(w)]
     if extern_gloss:  # We have an external glossary
         words = [w for w in words if w not in extern_gloss]
     if doc_gloss:  # We have a document glossary

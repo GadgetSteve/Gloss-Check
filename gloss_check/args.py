@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # encoding:utf-8
 """
-  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
-  Purpose: Arguments for the glossary checker.
-  Created: 17/04/2017
+Author:  Steve Barnes --<gadgetsteve@hotmail.com>
+Purpose: Arguments for the glossary checker.
+Created: 17/04/2017
 """
+
 import os
 import argparse
 import json
@@ -62,13 +63,13 @@ ARG_LIST = [
         [
             "-K",
             "-k",
-            "--inc_camel",
+            "--exc_camel",
         ],
         {
             "action": "store_true",
             "lable": "Came&l Case",
             "savecfg": True,
-            "help": "Include any word with upper any case after the first letter.",
+            "help": "Exclude words with mixed cases such as camelCase, PascalCase, etc.",
         },
     ),
     (

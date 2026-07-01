@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # encoding:utf-8
 """
-  Author:  Steve Barnes --<gadgetsteve@hotmail.com>
-  Purpose: Utility Functions for Glossary checking
-  Created: 17/04/2017
+Author:  Steve Barnes --<gadgetsteve@hotmail.com>
+Purpose: Utility Functions for Glossary checking
+Created: 17/04/2017
 """
+
 from __future__ import (
     print_function,
 )
@@ -107,9 +108,9 @@ def get_candidates(path, extern_gloss=None, options=None):
         )
         if options.glossary_unused:
             if options.table_gloss:
-                unused = [item for item in doc_gloss if not item in words]
+                unused = [item for item in doc_gloss if item not in words]
             else:
-                unused = [item for item in extern_gloss if not item in words]
+                unused = [item for item in extern_gloss if item not in words]
     return (
         success,
         candiates,
